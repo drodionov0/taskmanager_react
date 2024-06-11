@@ -1,0 +1,16 @@
+header{
+    width: 100%;
+    background-color: #ddeaf3;
+    height: 70px;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+
+.bl{
+    background-color: #bfd4e4;
+    width: 125px;
+    height: 30px;
+    border-radius: 10px;
+    margin: 20px;
+}
