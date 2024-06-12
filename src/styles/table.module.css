@@ -1,0 +1,28 @@
+*{
+    font-family: "Open Sans", sans-serif;
+}
+
+.get{
+    padding: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.get p{
+    color: #58778d;
+}
+
+.get button{
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    color: #486a84;
+    background-color: #bfd4e4;
+    cursor: pointer;
+}
+
+.get button:hover{
+    background-color: #9fb0bd;
+    transition: 0.8s;
+}
