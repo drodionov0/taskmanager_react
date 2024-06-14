@@ -1,0 +1,36 @@
+.container{
+    padding: 0 190px;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.lab{
+    color: #6b879b;
+}
+
+.formad{
+    display: grid;
+    grid-auto-flow: row; 
+    gap: 10px; 
+}
+
+.inp{
+    background-color: #bfd4e4;
+    border: none;
+    width: 425px;
+    height: 35px;
+    outline: none;
+}
+
+.inp2 {
+    background-color: #bfd4e4;
+    border: none;
+    width: 425px;
+    height: 150px; 
+    overflow-wrap: break-word;
+    outline: none;
+    text-align: top; 
+    resize: none;
+}
