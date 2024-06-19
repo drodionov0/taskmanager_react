@@ -9,7 +9,7 @@ const Add = () => {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/tasks')
+        axios.get('http://localhost:3001/tasks')
         .then(response => {
             setTasks(response.data);
         })
