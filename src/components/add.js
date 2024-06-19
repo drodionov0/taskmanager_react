@@ -26,7 +26,7 @@ const Add = () => {
                         <label className={styles.lab}>Описание</label>
                         <textarea className={styles.inp2}/>
                         <label className={styles.lab}>Тип задачи</label>
-                        <select>
+                        <select className={styles.sel}>
                             {tasks.map(task => (
                                 <option key={task.id}>{task.type}</option>
                             ))}
