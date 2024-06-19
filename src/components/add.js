@@ -31,6 +31,7 @@ const Add = () => {
                                 <option key={task.id}>{task.type}</option>
                             ))}
                         </select>
+                        <button className={styles.butadd}>Создать</button>
                     </form>
                 </div>
             </div>

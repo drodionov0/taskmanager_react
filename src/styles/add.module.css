@@ -41,3 +41,14 @@
     outline: none;
     background-color: #bfd4e4;
 }
+
+.butadd{
+    width: 250px;
+    height: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: #bfd4e4;
+    color: #4e708a;
+}
+
+
