@@ -35,14 +35,14 @@
     resize: none;
 }
 
-.sel{
+.sel {
     height: 30px;
     border: none;
     outline: none;
     background-color: #bfd4e4;
 }
 
-.butadd{
+.butadd {
     width: 250px;
     height: 25px;
     border: none;
