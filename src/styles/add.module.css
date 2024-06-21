@@ -6,11 +6,11 @@
     align-items: center;   
 }
 
-.lab{
+.lab {
     color: #6b879b;
 }
 
-.formad{
+.formad {
     display: grid;
     grid-auto-flow: row; 
     gap: 10px; 
