@@ -51,4 +51,9 @@
     color: #4e708a;
 }
 
-
+.butcenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
