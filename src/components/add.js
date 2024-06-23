@@ -29,7 +29,7 @@ const Add = () => {
                         <select className={styles.sel}>
                             {tasks.map(task => (
                                 <option key={task.id}>{task.type}</option>
-                            ))}
+                            ) ) }
                         </select>
                         <div className={styles.butcenter}>
                             <button className={styles.butadd}>Создать</button>
