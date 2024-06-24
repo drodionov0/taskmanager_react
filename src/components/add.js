@@ -14,6 +14,14 @@ const Add = () => {
             setTasks(response.data);
         })
         .catch(error => console.log(error))
+
+
+        const username = localStorage.getItem('username');
+
+        if (!username) {
+        const name = prompt('Введите ваше имя:');
+        localStorage.setItem('username', name);
+        }
     }, [])
 
     return(
