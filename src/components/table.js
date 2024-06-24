@@ -7,7 +7,7 @@ const Table = () => {
     
     const navigate = useNavigate();
 
-    const HandleAdd = () => {
+    const HandleAdd = () =>  {
       navigate('/add');
     };
 
