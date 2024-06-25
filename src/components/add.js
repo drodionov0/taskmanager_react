@@ -11,6 +11,7 @@ const Add = () => {
     const [taskname, setTaskName] = useState();
     const [desc, setDesc] = useState();
     const [type, setType] = useState();
+    const [errors, setErrors] = useState({});
 
 
 
@@ -45,8 +46,27 @@ const Add = () => {
     }, [])
 
 
+    const validate = () => {
+        const newErrors = {};
+
+        if (taskname.length < 3 || taskname.length > 100) {
+            newErrors.taskname = 'Наименование должно быть от 3 до 100 символов.';
+        }
+        if (desc.length < 10 || desc.length > 255) {
+            newErrors.desc = 'Описание должно быть от 10 до 255 символов.';
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!validate()) {
+            return console.error(errors);
+        }
+
 
         const username = localStorage.getItem('username')
 
