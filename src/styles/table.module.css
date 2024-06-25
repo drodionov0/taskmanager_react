@@ -23,7 +23,7 @@
     cursor: pointer;
 }
 
-.get button:hover{
+.get button:hover {
     background-color: #9fb0bd;
     transition: 0.8s;
 }
