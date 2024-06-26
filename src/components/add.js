@@ -1,19 +1,12 @@
-import styles from '../styles/add.module.css'
+import styles from '../styles/add.module.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-
-
+import { useForm } from 'react-hook-form';
 
 const Add = () => {
-
     const [tasks, setTasks] = useState([]);
     const [task, setTask] = useState([]);
-    const [taskname, setTaskName] = useState();
-    const [desc, setDesc] = useState();
-    const [type, setType] = useState();
-    const [errors, setErrors] = useState({});
-
-
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const getFormattedDate = () => {
         const date = new Date();
@@ -27,91 +20,84 @@ const Add = () => {
         return `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
     };
 
-
     useEffect(() => {
         axios.get('http://localhost:3001/tasks')
-        .then(response => {
-            setTasks(response.data);
-        })
-        .catch(error => console.log(error))
-
+            .then(response => setTasks(response.data))
+            .catch(error => console.log(error));
 
         const username = localStorage.getItem('username');
-
         if (!username) {
-        const name = prompt('Введите ваше имя:');
-        localStorage.setItem('username', name);
+            const name = prompt('Введите ваше имя:');
+            localStorage.setItem('username', name);
         }
+    }, []);
 
-    }, [])
-
-
-    const validate = () => {
-        const newErrors = {};
-
-        if (taskname.length < 3 || taskname.length > 100) {
-            newErrors.taskname = 'Наименование должно быть от 3 до 100 символов.';
-        }
-        if (desc.length < 10 || desc.length > 255) {
-            newErrors.desc = 'Описание должно быть от 10 до 255 символов.';
-        }
-
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (!validate()) {
-            return console.error(errors);
-        }
-
-
-        const username = localStorage.getItem('username')
-
-        const formatedDate = getFormattedDate();
+    const onSubmit = (data) => {
+        const username = localStorage.getItem('username');
+        const formattedDate = getFormattedDate();
 
         const addTask = {
             id: task.length + 1,
-            nameTask: taskname,
-            descriptionTask: desc,
-            typeTask: type,
+            nameTask: data.taskname,
+            descriptionTask: data.desc,
+            typeTask: data.type,
             nameInit: username,
-            dateInit: formatedDate,
-            dateRed: formatedDate
-        }
+            dateInit: formattedDate,
+            dateRed: formattedDate
+        };
 
-        axios.post('http://localhost:3001/task', addTask) 
-        .then(response => {
-            setTask([...task], response.data)
-        }).catch(error => console.log(error))
-    }
+        axios.post('http://localhost:3001/task', addTask)
+            .then(response => {
+                setTask([...task, response.data]);
+            })
+            .catch(error => console.log(error));
+    };
 
+    return (
+        <div className={styles.container}>
+            <div className={styles.formadd}>
+                <form className={styles.formad} onSubmit={handleSubmit(onSubmit)}>
+                    <label className={styles.lab}>Наименование</label>
+                    <input
+                        className={styles.inp}
+                        {...register('taskname', { 
+                            required: 'Наименование обязательно', 
+                            minLength: { value: 3, message: 'Минимум 3 символа' }, 
+                            maxLength: { value: 100, message: 'Максимум 100 символов' } 
+                        })}
+                    />
+                    {errors.taskname && <p className={styles.error}>{errors.taskname.message}</p>}
 
-    return(
-        <body>
-            <div className={styles.container}>
-                <div className={styles.formadd}>
-                    <form className={styles.formad} onSubmit={handleSubmit}>
-                        <label className={styles.lab}>Наименование</label>
-                        <input className={styles.inp} onChange={(e) => setTaskName(e.target.value)}/>
-                        <label className={styles.lab}>Описание</label>
-                        <textarea className={styles.inp2} onChange={(e) => setDesc(e.target.value)}/>
-                        <label className={styles.lab}>Тип задачи</label>
-                        <select className={styles.sel} onChange={(e) => setType(e.target.value)}>
-                            {tasks.map(task => (
-                                <option key={task.id}>{task.type}</option>
-                            ) ) }
-                        </select>
-                        <div className={styles.butcenter}>
-                            <button className={styles.butadd} type='submit'>Создать</button>
-                        </div>
-                    </form>
-                </div>
+                    <label className={styles.lab}>Описание</label>
+                    <textarea
+                        className={styles.inp2}
+                        {...register('desc', { 
+                            required: 'Описание обязательно', 
+                            minLength: { value: 10, message: 'Минимум 10 символов' }, 
+                            maxLength: { value: 255, message: 'Максимум 255 символов' } 
+                        })}
+                    />
+                    {errors.desc && <p className={styles.error}>{errors.desc.message}</p>}
+
+                    <label className={styles.lab}>Тип задачи</label>
+                    <select
+                        className={styles.sel}
+                        {...register('type', { required: 'Выберите тип задачи' })}
+                    >
+                        <option value="" label="Выберите тип задачи" />
+                        {tasks.map(task => (
+                            <option key={task.id} value={task.type}>{task.type}</option>
+                        ))}
+                    </select>
+                    {errors.type && <p className={styles.error}>{errors.type.message}</p>}
+
+                    <div className={styles.butcenter}>
+                        <button className={styles.butadd} type='submit'>Создать</button>
+                    </div>
+                </form>
             </div>
-        </body>
-    )
-}
+        </div>
+    );
+};
 
 export default Add;
