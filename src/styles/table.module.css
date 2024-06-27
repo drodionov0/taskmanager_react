@@ -39,7 +39,8 @@
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0 1em;
 }
 
 th, td {
@@ -49,4 +50,41 @@ th, td {
 
 th {
     color:#486a84;
+}
+
+.comp{
+    cursor: pointer;
+    background-color: #bfd4e4;
+    color: #486a84;
+}
+
+.comp:hover{
+    background-color: #8b99a3;
+    transition: 0.8s;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 20px; 
+}
+
+.pagination button {
+    border: none;
+    border-radius: 3px;
+    margin: 0 5px; 
+    padding: 8px 12px;
+    background-color: #bfd4e4;
+    color: #486a84;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #9fb0bd;
+}
+
+.pagination .active {
+    background-color: #486a84;
+    color: #fff;
 }
