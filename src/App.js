@@ -1,6 +1,7 @@
-import Add from "./components/add";
-import Header from "./components/header";
-import Table from "./components/table";
+
+import Add from "./components/Add";
+import Header from "./components/Header";
+import Table from "./components/Table";
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
 

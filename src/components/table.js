@@ -18,6 +18,20 @@ const Table = () => {
                     <p>Список записей</p>
                     <button className={styles.button} onClick={HandleAdd}>Добавить</button>
                 </div>
+                <div className={styles.board}>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Наименование</th>
+                                <th>Тип</th>
+                                <th>Имя инициатора</th>
+                                <th>Дата создания</th>
+                                <th>Дата изменения</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </body>
     )

@@ -2,11 +2,13 @@ import styles from '../styles/add.module.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const Add = () => {
     const [tasks, setTasks] = useState([]);
     const [task, setTask] = useState([]);
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
 
     const getFormattedDate = () => {
         const date = new Date();
@@ -49,8 +51,10 @@ const Add = () => {
         axios.post('http://localhost:3001/task', addTask)
             .then(response => {
                 setTask([...task, response.data]);
+                navigate('/');
             })
             .catch(error => console.log(error));
+
     };
 
     return (
