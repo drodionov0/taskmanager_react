@@ -1,7 +1,8 @@
 
-import Add from "./components/Add";
-import Header from "./components/Header";
-import Table from "./components/Table";
+import Add from "./components/add";
+import EditTask from "./components/EditTask";
+import Header from "./components/header";
+import Table from "./components/table";
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
 
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Table />} />
           <Route path='add' element={<Add />} />
+          <Route path='edit' element={<EditTask />} />
         </Routes>
       </BrowserRouter>
     </div>
