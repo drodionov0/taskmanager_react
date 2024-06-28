@@ -59,7 +59,8 @@ th {
 }
 
 .comp:hover{
-    background-color: #8b99a3;
+    background-color: #486a84;
+    color: white;
     transition: 0.8s;
 }
 
