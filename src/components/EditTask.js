@@ -10,7 +10,7 @@ const EditTask = () => {
                     <label className={styles.lab}>Описание</label>
                     <textarea className={styles.inp2} />
                     <label className={styles.lab}>Тип</label>
-                    <select className={styles.sel} />
+                    <select className={styles.sel}/>
                 </form>
             </div>
         </div>
