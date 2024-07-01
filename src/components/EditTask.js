@@ -11,7 +11,12 @@ const EditTask = () => {
                     <textarea className={styles.inp2} />
                     <label className={styles.lab}>Тип</label>
                     <select className={styles.sel}/>
-                    <p>Инициатор: </p>
+                    <p>Имя инициатора: </p>
+                    <p>Дата создания: </p>
+                    <div className={styles.edit}>
+                        <button>Сохранить</button>
+                        <button>Удалить</button>
+                    </div>
                 </form>
             </div>
         </div>

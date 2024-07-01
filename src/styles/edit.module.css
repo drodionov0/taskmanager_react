@@ -57,3 +57,23 @@
     justify-content: center;
 
 }
+
+.formad p {
+    color: #4e708a;
+}
+
+.edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.edit button {
+    width: 120px;
+    height: 25px;
+    border: none;
+    cursor: pointer;
+    background-color: #bfd4e4;
+    color: #4e708a;
+}
